@@ -21,3 +21,23 @@ print("Training features shape:", X_train.shape)
 print("Testing features shape:", X_test.shape)
 print("Training target shape:", y_train.shape)
 print("Testing target shape:", y_test.shape)
+
+from sklearn.preprocessing import StandardScaler
+from sklearn.neural_network import MLPRegressor
+
+# Scale features 
+scaler = StandardScaler()
+X_train = scaler.fit_transform(X_train)
+X_test = scaler.transform(X_test)
+
+# Train MLPRegressor
+model = MLPRegressor(
+    hidden_layer_sizes=(100, 50),
+    alpha=0.001,
+    learning_rate_init=0.005,
+    early_stopping=True,
+    random_state=42,
+    max_iter=500
+)
+model.fit(X_train, y_train)
+print(f"Training complete after {model.n_iter_} iterations.")
