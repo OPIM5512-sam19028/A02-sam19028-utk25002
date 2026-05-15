@@ -70,3 +70,20 @@ plt.plot([0, 5], [0, 5], color='red')
 plt.savefig("figures/train_actual_vs_pred.png")
 
 plt.close()
+
+# Generate test predictions
+test_preds = model.predict(X_test)
+test_rmse = mean_squared_error(y_test, test_preds) ** 0.5
+print("Test RMSE:", test_rmse)
+
+# Create Test Actual vs Predicted plot
+plt.figure(figsize=(8,6))
+plt.scatter(y_test, test_preds, alpha=0.5)
+plt.xlabel("Actual Median House Value")
+plt.ylabel("Predicted Median House Value")
+plt.title("Test: Actual vs Predicted")
+plt.plot([0, 5], [0, 5], color='red')
+plt.savefig("figures/test_actual_vs_pred.png")
+plt.close()
+
+print("Both plots saved to figures/")
