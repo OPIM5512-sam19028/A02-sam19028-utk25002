@@ -6,11 +6,11 @@ We will train a regression model on the California Housing dataset.
 
 ---
 
-## Overview
+## 📌 Overview
 
 This project uses an MLPRegressor neural network model on the California Housing dataset using scikit-learn to predict median house value. 
 
-The workflow includes:
+### 🔄 Workflow
 - loading the dataset
 - train/test splitting
 - feature scaling
@@ -20,7 +20,7 @@ The workflow includes:
 
 ---
 
-## Files
+## 📂 Files
 
 - `src/model.py` → main training and evaluation script
 - `figures/train_actual_vs_pred.png` → training set scatter plot
@@ -29,19 +29,21 @@ The workflow includes:
 
 ---
 
-## Required Packages & Running the Project
+## ⚙️ Required Packages & Running the Project
 
 Install packages using:
 
+```bash
 pip install -r requirements.txt
-
+```
 Run the model with:
 
+```bash
 python src/model.py
-
+```
 ---
 
-## Expected Output
+## 📊 Expected Output
 
 Running the script will:
 - print training and test evaluation metrics (RMSE, MAE, R², and MAPE)
@@ -50,3 +52,10 @@ Running the script will:
 Generated figures:
 - `figures/train_actual_vs_pred.png`
 - `figures/test_actual_vs_pred.png`
+
+---
+
+## 👥 Authors
+
+- Samra Mujcinovic
+- Oceane Pacode
