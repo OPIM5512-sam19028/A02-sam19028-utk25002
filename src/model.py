@@ -3,8 +3,10 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.neural_network import MLPRegressor
 
+import pandas as pd
+
 import matplotlib.pyplot as plt
-from sklearn.metrics import mean_squared_error
+from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score, mean_absolute_percentage_error
 
 # Load the California Housing dataset
 housing = fetch_california_housing(as_frame=True)
@@ -86,4 +88,22 @@ plt.plot([0, 5], [0, 5], color='red')
 plt.savefig("figures/test_actual_vs_pred.png")
 plt.close()
 
-print("Both plots saved to figures/")
+
+# Metrics helper
+def metrics_row(name, y_true, y_pred):
+    return {
+        "split": name,
+        "R2": r2_score(y_true, y_pred),
+        "MAE": mean_absolute_error(y_true, y_pred),
+        "RMSE": mean_squared_error(y_true, y_pred) ** 0.5,
+        "MAPE": mean_absolute_percentage_error(y_true, y_pred)
+    }
+
+metrics_df = pd.DataFrame([
+    metrics_row("train", y_train, train_preds),
+    metrics_row("test", y_test, test_preds),
+])
+
+print("\n=== Model Metrics ===")
+print(metrics_df.to_string(index=False))
+
